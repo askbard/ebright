@@ -1,7 +1,39 @@
-# 1-Day Linux Server Maintenance Training Schedule
+# Ebright Linux Crash Course
+
+## Introduction
+This document provides the official 1-day training timetable for the Ebright Linux Crash Course. It outlines the full session flow across both training pillars, including lecture blocks, practical labs, review activities, and instructor implementation notes.
+
+## Course Overview
+The Ebright Linux Crash Course is designed to equip the IT and Administration team with practical skills for independent cloud server management.
+
+Full detailed overview: [Training Overview](Training%20Overview.md)
+
+### Pillar 1: System Identity, Access & Administration
+- Focus: Establishing infrastructure foundations and organizational hierarchy.
+- Objective: Build a professional server mindset through CLI operations, VPS administration, SSH security, filesystem navigation, and role-based access controls for internal data protection.
+- Coverage: Linux fundamentals, remote access, filesystem hierarchy, users and permissions, automation basics, and core process/network operations.
+
+### Pillar 2: Deployment, Security & Continuity
+- Focus: Application delivery, monitoring, and system stability.
+- Objective: Transition from system administration to application operations, including deployment workflows, system diagnostics, firewall hardening, backup planning, and recovery readiness.
+- Coverage: Snapshots, package management, Git-based deployment, DNS identity, UFW firewall setup, and continuity procedures.
+
+## Learning Outcome
+By the end of the day, the Ebright IT team transitions from passive managed-host users to active cloud infrastructure administrators with practical survival skills to keep services stable, secure, and accessible.
+
+General objectives:
+- Build confidence using Linux CLI commands for daily server administration tasks.
+- Apply secure access and identity practices, including SSH key usage and role-based permissions.
+- Perform structured filesystem and user/group management aligned with departmental operations.
+- Execute basic deployment and update workflows using package management and Git.
+- Monitor system health, interpret core diagnostics, and respond to common operational incidents.
+- Implement continuity controls through snapshots, backups, firewall hardening, and recovery readiness.
 
 ## Client
 Ebright IT & Administration Team
+
+## Date
+10th March 2026
 
 ## Total Duration
 8 Hours (`09:00 - 17:00`)
@@ -21,20 +53,20 @@ Ebright IT & Administration Team
 
 | Time | Session Type | Module | Key Focus |
 | --- | --- | --- | --- |
-| 14:00 - 15:00 | Lecture | Module 3: Deployment, Security & Continuity | Snapshots, package management (APT), Git workflows, and DNS records. |
-| 15:00 - 16:15 | Practical | Module 3: Deployment, Security & Continuity | Live lab: Nginx/Git deployment, firewall (UFW) setup, and snapshot recovery. |
-| 16:15 - 17:00 | Review | Final | Q&A, emergency escalation protocols, and "survival" cheat sheet distribution. |
+| 14:00 - 15:00 | Lecture | Module 3: Deployment, Security & Continuity | Snapshots, package management (Apt), Git workflows, and DNS records. |
+| 15:00 - 16:15 | Practical | Module 3: Deployment, Security & Continuity | Live lab: Nginx/Git deployment, Firewall (UFW) setup, and Snapshot Recovery. |
+| 16:15 - 17:00 | Review | Final | Q&A, Emergency Escalation Protocols, and "Survival" Cheat Sheet distribution. |
 
 ## Session Breakdown Summary
 
 ### Pillar 1 Session
-- Duration: `3.75 hours` (excluding break)
-- Emphasis: Transitioning to the "server mindset" and establishing the "departmental silo" structure to protect Ebright internal data.
+- Duration: `3.75 Hours` (Excluding Break)
+- Emphasis: Transitioning to the "Server Mindset" and establishing the "Departmental Silo" structure to protect Ebright's internal data.
 
 ### Pillar 2 Session
-- Duration: `3 hours`
-- Emphasis: Shifting from file administration to application delivery, including real-world deployment of the Ebright Parent Portal and perimeter hardening.
+- Duration: `3 Hours`
+- Emphasis: Shifting from file administration to application delivery. Real-world deployment of the Ebright Parent Portal and perimeter hardening.
 
 ## Instructor Notes
-- Practical buffer: Practical sessions include buffer time for students who may encounter Docker or SSH connectivity issues.
-- Quiz integration: Short 5-minute knowledge checks should be performed at the start of Module 2 and Module 3 to refresh concepts.
+- Practical Buffer: The Practical sessions include buffer time for students who may encounter Docker or SSH connectivity issues.
+- Quiz Integration: Short 5-minute knowledge checks (Quizzes) should be performed at the start of Module 2 and Module 3 to refresh concepts.
