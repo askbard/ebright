@@ -11,7 +11,7 @@ By the end of this practical session, learners should be able to:
 - Verify Linux kernel and shell basics.
 - Explain case sensitivity and Linux command feedback behavior.
 - Generate SSH key pairs on Windows and identify private/public keys.
-- Explain how a `Dockerfile` and `docker-compose.yml` create a repeatable SSH training environment.
+- Explain how a `Dockerfile` and `asset/docker-compose.yml` create a repeatable SSH training environment.
 - Start, verify, and stop a Compose service used for SSH testing.
 
 ## Suggested Session Timeline
@@ -29,13 +29,14 @@ By the end of this practical session, learners should be able to:
 ### 1. Orientation and Ground Rules (5 to 10 min)
 Talking points:
 - Learners are safe to make mistakes inside the Docker sandbox.
+- This session uses the VS Code integrated terminal as the default terminal.
 - Differentiate terminal contexts early:
-- `PS C:\Users\...` means Windows PowerShell.
+- `PS C:\Users\...` means Windows host terminal (including VS Code terminal).
 - `root@...:/#` means Linux container shell.
 - Ask learners to run commands one-by-one, not in large pasted blocks.
 
 Quick instructor check:
-- Confirm everyone can open PowerShell or Windows Terminal.
+- Confirm everyone can open VS Code and start a terminal from `Terminal > New Terminal`.
 
 ### 2. Pre-Lab Docker Installation Check (10 to 15 min)
 Learner action:
@@ -112,7 +113,7 @@ Intervention tip:
 
 ### 6. Lab 4 SSH Key Generation on Windows (10 to 15 min)
 Important:
-- Learners must open a new Windows PowerShell window for this step.
+- Learners must open a new VS Code terminal tab for this step.
 - Do not run inside Linux container shell.
 
 Learner action:
@@ -133,19 +134,20 @@ Security emphasis:
 
 ### 7. Lab 5 Optional: Dockerfile + Compose SSH Lab (15 to 20 min)
 Trainer setup note:
-- This lab teaches image build (`Dockerfile`) and service orchestration (`docker-compose.yml`) while validating SSH access.
+- This lab teaches image build (`Dockerfile`) and service orchestration (`asset/docker-compose.yml`) while validating SSH access.
 
 Learner action (from project root):
 ```bash
-docker compose up -d --build
-docker compose ps
+docker compose -f asset/docker-compose.yml up -d --build
+docker compose -f asset/docker-compose.yml ps
 ```
 
 Expected outcome:
 - Service `ebright-practice-ssh` is `Up`.
 - Port mapping includes `0.0.0.0:2222->22/tcp`.
 
-SSH verification from Windows PowerShell:
+SSH verification from VS Code terminal:
+SSH verification from VS Code terminal:
 ```bash
 ssh trainee@localhost -p 2222
 ```
@@ -164,9 +166,9 @@ type $HOME\.ssh\id_rsa.pub
 
 Compose lifecycle drill:
 ```bash
-docker compose stop
-docker compose start
-docker compose down
+docker compose -f asset/docker-compose.yml stop
+docker compose -f asset/docker-compose.yml start
+docker compose -f asset/docker-compose.yml down
 ```
 
 Teaching cues:
@@ -178,8 +180,8 @@ Teaching cues:
 Learner action:
 ```bash
 exit
-docker compose stop
-docker compose down
+docker compose -f asset/docker-compose.yml stop
+docker compose -f asset/docker-compose.yml down
 ```
 
 Trainer note:
@@ -193,33 +195,33 @@ Trainer note:
 - Learner can run and explain `uname -sr` and `echo $SHELL`.
 - Learner confirms case-sensitive filename behavior.
 - Learner successfully generates SSH keys and identifies both files.
-- Learner can run `docker compose up -d --build` and confirm service is `Up`.
+- Learner can run `docker compose -f asset/docker-compose.yml up -d --build` and confirm service is `Up`.
 - Learner can SSH to `localhost:2222` successfully.
 
 ## Fast Troubleshooting Card (Instructor Use)
 1. Docker command not recognized
 - Ensure Docker Desktop is installed and fully started.
-- Reopen terminal.
+- Reopen VS Code terminal.
 
 2. WSL 2 requirement error
 - Enable/install WSL 2.
 - Reboot and reopen Docker Desktop.
 
 3. Existing container name conflict
-- If using old flow, remove stale container; for new flow, use `docker compose down` then `docker compose up -d --build`.
+- If using old flow, remove stale container; for new flow, use `docker compose -f asset/docker-compose.yml down` then `docker compose -f asset/docker-compose.yml up -d --build`.
 
 4. SSH command not found
 - Use latest Windows 10/11 with OpenSSH Client feature enabled.
 
 5. Learner ran SSH keygen inside container
-- Stop and rerun in Windows PowerShell.
+- Stop and rerun in VS Code terminal on Windows host.
 
 6. SSH connection refused on `localhost:2222`
-- Verify service status using `docker compose ps`.
-- Rebuild and restart using `docker compose up -d --build`.
+- Verify service status using `docker compose -f asset/docker-compose.yml ps`.
+- Rebuild and restart using `docker compose -f asset/docker-compose.yml up -d --build`.
 
 7. Learner runs Compose in wrong folder
-- Ensure terminal path is project root where `docker-compose.yml` exists.
+- Ensure terminal path is project root and use `-f asset/docker-compose.yml`.
 
 ## Optional Extension (If Time Allows)
 - Show learners how to display public key content:

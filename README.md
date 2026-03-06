@@ -14,6 +14,29 @@ Full detailed overview: [Training Overview](Training%20Overview.md)
 - [Lecture Guide - Module 2](Lecture%20Guide%20-%20Module%202.md)
 - [Practical Guide - Module 2](Practical%20Guide%20-%20Module%202.md)
 
+## First 2 Minutes Setup (VS Code)
+1. Open Visual Studio Code.
+2. Open terminal in VS Code: `Terminal > New Terminal`.
+3. Clone and open the training repository:
+
+```bash
+git clone https://github.com/askbard/ebright.git
+cd ebright
+code .
+```
+
+4. In the opened project terminal, run:
+
+```bash
+docker --version
+docker compose version
+```
+
+Expected:
+- Repository is cloned and opened in VS Code.
+- Docker command returns a version string.
+- Docker Compose command returns a version string.
+
 ### Pillar 1: System Identity, Access & Administration
 - Focus: Establishing infrastructure foundations and organizational hierarchy.
 - Objective: Build a professional server mindset through CLI operations, VPS administration, SSH security, filesystem navigation, and role-based access controls for internal data protection.
@@ -49,7 +72,7 @@ Ebright IT & Administration Team
 | Time | Session Type | Module | Key Focus |
 | --- | --- | --- | --- |
 | 09:00 - 09:45 | Lecture | [Module 1: Introduction, Fundamentals & Remote Access](Lecture%20Guide%20-%20Module%201.md) | Ecosystem (GUI vs CLI), Cloud/VPS theory, and SSH handshake/security. |
-| 09:45 - 10:30 | Practical | [Module 1: Introduction, Fundamentals & Remote Access](Practical%20Guide%20-%20Module%201.md) | Docker sandbox setup, Dockerfile + Compose basics, system verification, and SSH key generation/testing. |
+| 09:45 - 10:30 | Practical | [Module 1: Introduction, Fundamentals & Remote Access](Practical%20Guide%20-%20Module%201.md) | Docker sandbox setup using `asset/Dockerfile` + `asset/docker-compose.yml`, system verification, and SSH key generation/testing. |
 | 10:30 - 10:45 | Break | - | Morning coffee break. |
 | 10:45 - 12:00 | Lecture | [Module 2: Mastering the Filesystem, Users & Permissions](Lecture%20Guide%20-%20Module%202.md) | The 8 core topics: FHS, security logic, productivity, and network operations. |
 | 12:00 - 13:00 | Practical | [Module 2: Mastering the Filesystem, Users & Permissions](Practical%20Guide%20-%20Module%202.md) | Hands-on: Building Ebright's hierarchy, permissions, and automation. |

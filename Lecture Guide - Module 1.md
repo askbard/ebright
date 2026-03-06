@@ -4,7 +4,7 @@
 
 **Session Duration:** 2 to 3 hours  
 **Delivery Mode:** Instructor-led with live terminal demos  
-**Tools:** Ubuntu Server (or Docker Ubuntu container), Dockerfile, Docker Compose, terminal, SSH client
+**Tools:** Ubuntu Server (or Docker Ubuntu container), Dockerfile, Docker Compose, Visual Studio Code, VS Code integrated terminal, SSH client
 
 ## Learning Outcomes
 By the end of this module, learners should be able to:
@@ -19,6 +19,8 @@ By the end of this module, learners should be able to:
 
 ## Pre-Class Checklist
 - Ensure Docker Desktop or a Linux VM is installed.
+- Ensure Visual Studio Code is installed.
+- Confirm learners can open the VS Code integrated terminal (`Terminal > New Terminal`).
 - Prepare an SSH client (`ssh` in PowerShell, Git Bash, or Windows Terminal).
 - Confirm internet connectivity for package updates and remote access tests.
 - Bring a text editor for note-taking and command logging.
@@ -146,17 +148,17 @@ This topic clarifies where to practice safely and how to choose the right isolat
 ### 4.4 Demo Commands
 
 ```bash
-docker compose up -d --build
-docker compose ps
+docker compose -f asset/docker-compose.yml up -d --build
+docker compose -f asset/docker-compose.yml ps
 docker exec -it ebright-practice-ssh bash
 cat /etc/os-release
 exit
-docker compose down
+docker compose -f asset/docker-compose.yml down
 ```
 
 Talking points:
 - `Dockerfile` defines the image build instructions.
-- `docker-compose.yml` defines runtime configuration like ports and service names.
+- `asset/docker-compose.yml` defines runtime configuration like ports and service names.
 - Compose improves consistency for classroom labs compared to one-off commands.
 
 ## 5. Remote Access Theory: SSH & Security Protocols

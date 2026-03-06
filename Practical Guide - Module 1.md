@@ -11,7 +11,8 @@ Use this checklist before running any command.
 
 - You are using Windows 10/11 with administrator access.
 - You have a stable internet connection.
-- You can open PowerShell or Windows Terminal.
+- You have Visual Studio Code installed.
+- You can open the VS Code integrated terminal.
 - Virtualization is enabled in BIOS/UEFI (required by Docker Desktop).
 - You have at least 8 GB RAM recommended for smoother Docker usage.
 
@@ -27,10 +28,45 @@ Command format in this guide:
 - Commands shown in code blocks are typed exactly as-is.
 - Do not type the `$` symbol (we do not use it here).
 - Linux commands must be run inside the Docker Linux prompt.
-- Windows commands must be run in PowerShell/Terminal on Windows.
+- Windows commands should be run in the VS Code integrated terminal.
 
 ## Pre-Lab: Installing Docker Desktop from the Internet
 Before we can start the training, we must install the Docker "Engine" on your Windows computer.
+
+### Step 0: Install Visual Studio Code (Required for This Session)
+We will use the VS Code integrated terminal for all commands in this lab.
+
+1. Open your browser and go to `https://code.visualstudio.com/`.
+2. Click **Download for Windows**.
+3. Run the installer and continue with default options.
+4. Open VS Code after installation.
+5. Open a terminal in VS Code using **Terminal > New Terminal**.
+
+Quick check:
+
+```bash
+code --version
+```
+
+If `code --version` is not recognized inside terminal, continue anyway as long as VS Code is installed and open.
+
+### Step 0.5: Clone the Training Repository (Required)
+All guide files and lab assets are inside this repository.
+
+In VS Code terminal, run:
+
+```bash
+git clone https://github.com/askbard/ebright.git
+cd ebright
+code .
+```
+
+Expected result:
+- A new folder named `ebright` is created.
+- VS Code opens the cloned project.
+
+If `code .` is not recognized:
+- In VS Code, use **File > Open Folder** and select the cloned `ebright` folder.
 
 ### Step 1: Download the Installer
 1. Open your web browser and go to `https://www.docker.com/products/docker-desktop`.
@@ -48,7 +84,7 @@ Before we can start the training, we must install the Docker "Engine" on your Wi
 2. Accept the Docker Subscription Service Agreement.
 3. Wait for the engine to start (the whale icon in the bottom-right corner will stop moving).
 
-Quick check in PowerShell:
+Quick check in VS Code terminal:
 
 ```bash
 docker --version
@@ -65,7 +101,7 @@ Before touching Ebright's live servers, we use Docker to create a disposable Lin
 3. If it is not running, search for **Docker Desktop** in the Start Menu and launch it.
 
 ### Task 1.2: Launching the Linux Environment
-1. Right-click the Start button and select **Windows PowerShell** or **Terminal**.
+1. Open VS Code and start a terminal using **Terminal > New Terminal**.
 2. Type the following command exactly and press Enter:
 
 ```bash
@@ -143,7 +179,7 @@ Checkpoint:
 Establish secure, password-less entry into the Ebright VPS. Do this on your Windows machine, not inside the Linux container.
 
 ### Task 4.1: Generating Your Keys in Windows
-1. Open a new PowerShell window (do not use the one where Linux is running).
+1. Open a new VS Code terminal tab (do not use the one where Linux is running).
 2. Type the following command:
 
 ```bash
@@ -182,7 +218,7 @@ Important notes:
 ### Task 5.1: Understand the Project Files
 This repo now includes:
 - `asset/Dockerfile`: builds an Ubuntu image with SSH enabled.
-- `docker-compose.yml`: starts the container and maps `localhost:2222` to container port `22`.
+- `asset/docker-compose.yml`: starts the container and maps `localhost:2222` to container port `22`.
 
 Open `asset/Dockerfile` and note:
 - `openssh-server` is installed.
@@ -191,20 +227,20 @@ Open `asset/Dockerfile` and note:
 - SSH daemon starts in foreground using `sshd -D`.
 
 ### Task 5.2: Build and Start with Docker Compose
-In Windows PowerShell (from project root), run:
+In VS Code terminal (from project root), run:
 
 ```bash
-docker compose up -d --build
+docker compose -f asset/docker-compose.yml up -d --build
 ```
 
 Why this matters:
 - `--build` builds the image from `asset/Dockerfile`.
-- Compose reads `docker-compose.yml` and applies consistent settings.
+- Compose reads `asset/docker-compose.yml` and applies consistent settings.
 
 Verification:
 
 ```bash
-docker compose ps
+docker compose -f asset/docker-compose.yml ps
 ```
 
 Expected result:
@@ -212,7 +248,7 @@ Expected result:
 - Port mapping shows `0.0.0.0:2222->22/tcp`.
 
 ### Task 5.3: Test SSH Login from Windows
-Open a new Windows PowerShell window and run:
+Open a new VS Code terminal tab and run:
 
 ```bash
 ssh trainee@localhost -p 2222
@@ -226,7 +262,7 @@ Verification:
 - If login succeeds, your prompt changes to something like `trainee@<container-id>:$`.
 
 ### Task 5.4: Optional Key-Based SSH Login (Recommended)
-In Windows PowerShell, copy your public key text:
+In VS Code terminal, copy your public key text:
 
 ```bash
 type $HOME\.ssh\id_rsa.pub
@@ -250,7 +286,7 @@ Finish permissions:
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-Now test key login from a new Windows PowerShell:
+Now test key login from a new VS Code terminal tab:
 
 ```bash
 ssh trainee@localhost -p 2222
@@ -262,9 +298,9 @@ If your key is loaded and recognized, login should work without password prompt.
 Run these commands to understand service lifecycle:
 
 ```bash
-docker compose stop
-docker compose start
-docker compose down
+docker compose -f asset/docker-compose.yml stop
+docker compose -f asset/docker-compose.yml start
+docker compose -f asset/docker-compose.yml down
 ```
 
 What each command does:
@@ -274,14 +310,14 @@ What each command does:
 
 ## Lab Summary and Cleanup
 - To exit the Sandbox: `exit`
-- To start services with Compose: `docker compose up -d`
-- To stop services without removing: `docker compose stop`
-- To remove all Compose resources: `docker compose down`
+- To start services with Compose: `docker compose -f asset/docker-compose.yml up -d`
+- To stop services without removing: `docker compose -f asset/docker-compose.yml stop`
+- To remove all Compose resources: `docker compose -f asset/docker-compose.yml down`
 
 ## Troubleshooting (Common Beginner Issues)
-1. `docker: command not found` in PowerShell.
+1. `docker: command not found` in terminal.
 - Cause: Docker Desktop is not installed correctly or terminal was opened before installation finished.
-- Fix: Close terminal, reopen PowerShell, run `docker --version` again.
+- Fix: Close terminal, reopen VS Code terminal, run `docker --version` again.
 
 2. Docker Desktop says WSL 2 is required.
 - Cause: WSL is not enabled.
@@ -297,11 +333,11 @@ What each command does:
 
 5. Confusion between Windows and Linux terminals.
 - Rule: If your prompt starts with `root@...:/#`, you are in Linux container.
-- Rule: If your prompt starts with `PS C:\Users\...`, you are in Windows PowerShell.
+- Rule: If your prompt starts with `PS C:\Users\...`, you are in Windows terminal (including VS Code terminal).
 
 6. SSH connection refused on `localhost:2222`.
 - Cause: Compose service is not running, port mapping failed, or build did not complete.
-- Fix: Run `docker compose up -d --build`, then check `docker compose ps`.
+- Fix: Run `docker compose -f asset/docker-compose.yml up -d --build`, then check `docker compose -f asset/docker-compose.yml ps`.
 
 ## Troubleshooting: If Docker Desktop Fails to Start
 Common issues for Windows users are often related to system settings called virtualization.
