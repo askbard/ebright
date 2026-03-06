@@ -16,11 +16,16 @@ Full detailed overview: [Training Overview](Training%20Overview.md)
 - [Lecture Guide - Module 3](Lecture%20Guide%20-%20Module%203.md)
 - [Practical Guide - Module 3](Practical%20Guide%20-%20Module%203.md)
 
-## Module 3 Lab Assets
-- Docker Compose stack files for the extra lab are in `asset/module3/`.
-- Main compose file: `asset/module3/docker-compose.yml`.
-- Docker image deployment sample files are in `asset/module3/deploy/`.
-- Sample app Dockerfile: `asset/module3/deploy/Dockerfile`.
+## Asset
+
+| Module | File Path | Description |
+| --- | --- | --- |
+| Module 1 | `asset/module1/Dockerfile` | Builds Ubuntu training image with SSH server and `trainee` user for remote access practice. |
+| Module 1 | `asset/module1/docker-compose.yml` | Starts the SSH practice container and maps host port `2222` to container port `22`. |
+| Module 3 | `asset/module3/docker-compose.yml` | Comprehensive stack for extra lab: Nginx reverse proxy, app (`whoami`), PostgreSQL, Redis, Adminer, and optional toolbox profile. |
+| Module 3 | `asset/module3/nginx/default.conf` | Nginx reverse-proxy config with `/healthz` endpoint and upstream routing to app service. |
+| Module 3 | `asset/module3/deploy/Dockerfile` | Sample Docker image build recipe used in Module 3 image-based deployment workflow. |
+| Module 3 | `asset/module3/deploy/index.html` | Sample static page packaged into the Module 3 deployment image for verification. |
 
 ## First 2 Minutes Setup (VS Code)
 1. Open Visual Studio Code.
