@@ -13,6 +13,8 @@ Full detailed overview: [Training Overview](Training%20Overview.md)
 - [Practical Guide - Module 1](Practical%20Guide%20-%20Module%201.md)
 - [Lecture Guide - Module 2](Lecture%20Guide%20-%20Module%202.md)
 - [Practical Guide - Module 2](Practical%20Guide%20-%20Module%202.md)
+- [Lecture Guide - Module 3](Lecture%20Guide%20-%20Module%203.md)
+- [Practical Guide - Module 3](Practical%20Guide%20-%20Module%203.md)
 
 ## First 2 Minutes Setup (VS Code)
 1. Open Visual Studio Code.
@@ -82,8 +84,8 @@ Ebright IT & Administration Team
 
 | Time | Session Type | Module | Key Focus |
 | --- | --- | --- | --- |
-| 14:00 - 15:00 | Lecture | Module 3: Deployment, Security & Continuity | Snapshots, package management (Apt), Git workflows, and DNS records. |
-| 15:00 - 16:15 | Practical | Module 3: Deployment, Security & Continuity | Live lab: Nginx/Git deployment, Firewall (UFW) setup, and Snapshot Recovery. |
+| 14:00 - 15:00 | Lecture | [Module 3: Deployment, Security & Continuity](Lecture%20Guide%20-%20Module%203.md) | Snapshots, package management (Apt), Git workflows, and DNS records. |
+| 15:00 - 16:15 | Practical | [Module 3: Deployment, Security & Continuity](Practical%20Guide%20-%20Module%203.md) | Live lab: Nginx/Git deployment, Firewall (UFW) setup, and Snapshot Recovery. |
 | 16:15 - 17:00 | Review | Final | Q&A, Emergency Escalation Protocols, and "Survival" Cheat Sheet distribution. |
 
 ## Session Breakdown Summary
