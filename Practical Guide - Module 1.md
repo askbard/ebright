@@ -56,7 +56,7 @@ All guide files and lab assets are inside this repository.
 In VS Code terminal, run:
 
 ```bash
-git clone https://github.com/askbard/ebright.git
+git clone https://github.com/um-csnet/ebright.git
 cd ebright
 code .
 ```

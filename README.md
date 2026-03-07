@@ -33,7 +33,7 @@ Full detailed overview: [Training Overview](Training%20Overview.md)
 3. Clone and open the training repository:
 
 ```bash
-git clone https://github.com/askbard/ebright.git
+git clone https://github.com/um-csnet/ebright.git
 cd ebright
 code .
 ```
